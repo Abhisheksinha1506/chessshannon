@@ -230,17 +230,3 @@ export async function isSequenceAvailable(
     return !data;
 }
 
-/**
- * Utility: Get popular chess openings
- */
-export async function getPopularOpenings(supabase: any): Promise<any[]> {
-    const { data, error } = await supabase
-        .from('chess_openings')
-        .select('*')
-        .eq('is_available', true)
-        .order('popularity_score', { ascending: false })
-        .limit(20);
-
-    if (error) throw error;
-    return data || [];
-}

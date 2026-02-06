@@ -90,14 +90,6 @@ export interface UrlStatsResponse {
     error?: string;
 }
 
-export interface ChessOpening {
-    id: number;
-    name: string;
-    ecoCode?: string;
-    moves: string;
-    popularityScore: number;
-    isAvailable: boolean;
-}
 
 export interface ValidationResult {
     valid: boolean;
