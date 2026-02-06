@@ -136,7 +136,9 @@ export async function POST(request: NextRequest) {
             );
         }
 
-        const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+        // Determine base URL dynamically from request to support both local and production environments
+        const requestOrigin = request.nextUrl.origin;
+        const baseUrl = requestOrigin || process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
         const shortUrl = `${baseUrl}/${chessSequence}`;
 
         return NextResponse.json({
